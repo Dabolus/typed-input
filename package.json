@@ -1,7 +1,7 @@
 {
   "name": "typed-input",
   "version": "0.0.0",
-  "description": "A complete and simple to use share menu.",
+  "description": "An ultra simple element that extends the native input element and makes it typed.",
   "main": "typed-input.js",
   "module": "typed-input.js",
   "browser": "typed-input.iife.js",
@@ -45,8 +45,8 @@
   "keywords": [
     "custom-element",
     "web-component",
-    "typed-input",
-    "web-share-api"
+    "typed",
+    "input"
   ],
   "author": "Giorgio Garasto <giorgio@garasto.it>",
   "license": "MIT",
