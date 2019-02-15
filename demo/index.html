@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>typed-input demo</title>
+    <meta name="description" content="typed-input demo description">
+
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+
+    <script type="module">
+      import '@polymer/iron-demo-helpers/demo-snippet';
+    </script>
+
+    <script type="module" src="../typed-input.js"></script>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic typed-input demo</h3>
+      <demo-snippet>
+        <template>
+          <dom-bind>
+            <template>
+              Type:&nbsp;
+              <select id="select">
+                <option>text</option>
+                <option>button</option>
+                <option>checkbox</option>
+                <option>color</option>
+                <option>date</option>
+                <option>datetime-local</option>
+                <option>email</option>
+                <option>file</option>
+                <option>hidden</option>
+                <option>image</option>
+                <option>month</option>
+                <option>number</option>
+                <option>password</option>
+                <option>radio</option>
+                <option>range</option>
+                <option>reset</option>
+                <option>search</option>
+                <option>submit</option>
+                <option>tel</option>
+                <option>time</option>
+                <option>url</option>
+                <option>week</option>
+              </select>
+              <br>
+              Input:&nbsp;
+              <input id="input" is="typed-input">
+              <br>
+              Value: <span id="value"></span>
+              <br>
+              Value type: <span id="type"></span>
+              <script>
+                const updateTexts = () => {
+                  value.innerText = input.value;
+                  type.innerText = input.value.constructor.name;
+                };
+                select.addEventListener('change', () => {
+                  input.type = select.value;
+                  updateTexts();
+                });
+                input.addEventListener('input', updateTexts);
+                input.addEventListener('change', updateTexts);
+              </script>
+            </template>
+          </dom-bind>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
