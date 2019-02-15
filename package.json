@@ -1,6 +1,6 @@
 {
   "name": "typed-input",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "An ultra simple element that extends the native input element and makes it typed.",
   "main": "typed-input.js",
   "module": "typed-input.js",
