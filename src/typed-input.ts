@@ -1,4 +1,17 @@
 export class HTMLTypedInputElement extends HTMLInputElement {
+  // Note: we have to use the any type because otherwise TypeScript complains
+  set value(val: any) {
+    if (val instanceof Date) {
+      super.value = val.toISOString().slice(0, super.type === 'date' ? 10 : -1);
+      return;
+    }
+    if (typeof val === 'boolean') {
+      super.checked = val;
+      return;
+    }
+    super.value = `${val}`;
+  }
+
   get value(): any {
     switch (super.type) {
       case 'checkbox':
