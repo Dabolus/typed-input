@@ -11,6 +11,7 @@
       "limit": 120,
       "ignore-pattern": "^import |^export {(.*?)}|class [a-zA-Z]+ implements |//|^ */\\*|^ *\\*"
     }],
+    "max-classes-per-file": false,
     "prefer-const": true,
     "no-duplicate-variable": true,
     "no-eval": true,
