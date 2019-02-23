@@ -1,7 +1,19 @@
+/**
+ * By using this interface instead of `HTMLInputElement`, we avoid
+ * having the generated typings include most DOM API already provided by
+ * TypeScript. This is particularly useful since different versions of
+ * TypeScript may have different DOM API typings (e.g. TS 3.0.3 and TS 3.1.1).
+ */
+interface InputElement {
+  type: string;
+  value: string;
+  checked: boolean;
+}
+
 type Constructor<T> = new(...args: any[]) => T;
 
 export const typed =
-  <T extends Constructor<HTMLInputElement>>(baseElement: T) =>
+  <T extends Constructor<InputElement>>(baseElement: T) =>
     class extends baseElement {
     // Note: we have to use the any type because otherwise TypeScript complains
     set value(val: any) {
