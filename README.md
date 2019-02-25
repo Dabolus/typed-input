@@ -34,19 +34,51 @@ dates for `input[type="date"]`, etc.). Remember that to get
 the typed value you will need to read the `value` property, **not** the `value` 
 attribute. _e.g. `input.value` will work, `input.getAttribute('value')` won't._
 
-If for some reason you need to access the original, stringified value, you can use the backup property `input.rawValue`.
+If for some reason you need to access the original, stringified value, you can 
+use the backup property `input.rawValue`.
 
-### Advanced
+Practical example:
+
+```html
+<script type="module" src="path/to/typed-input.js"></script>
+<input is="typed-input" type="number" id="input">
+<script>
+  console.log(typeof input.value === 'number');
+  // true
+  console.log(typeof input.rawValue === 'string');
+  // true
+</script>
+```
+
+### Extending the element
+If you're building your own input element and you want it to be typed, you can 
+extend `HTMLTypedInputElement` instead of `HTMLInputElement`.
+
+Practical example:
+
+```javascript
+import { HTMLTypedInputElement } from 'typed-input';
+
+class MyCustomTypedInput extends HTMLTypedInputElement {
+  // ...
+}
+
+customElements.define('my-custom-typed-input', MyCustomTypedInput, { extends: 'input' });
+```
+
+### Using the mixin
 If you are extending an element that already extends the native input, 
 or you need to add types to an input-like element (i.e. an element that has 
 `type`, `value` and `checked` properties), a `typed` mixin is also provided.
 
-For example:
+Practical example:
 
 ```javascript
 import { typed } from 'typed-input';
 
-class MyAwesomeCustomInput extends typed(MyInputLikeElement) {
+class MyCustomTypedInput extends typed(MyInputLikeElement) {
   // ...
 }
+
+customElements.define('my-custom-typed-input', MyCustomTypedInput, { extends: 'input' });
 ```
