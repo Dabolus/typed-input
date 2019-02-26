@@ -3,6 +3,7 @@ workflow "Lint, Test and Build" {
   resolves = [
     "Lint",
     "Test",
+    "Build",
   ]
 }
 
